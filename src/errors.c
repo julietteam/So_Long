@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:51:16 by juandrie          #+#    #+#             */
-/*   Updated: 2023/10/18 11:53:48 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:44:46 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	count_checker(t_complete *game, int h, int w)
 		game->map[h][w] != 'C' &&
 		game->map[h][w] != '\n')
 	{
-		ft_printf("\nError Here!%c\n", game->map[h][w]);
+		ft_printf("Error\nline:%i\tpos:%i\tchar:%c\n", h, w, game->map[h][w]);
 		exit_point(game);
 	}
 	if (game->map[h][w] == 'C')
@@ -51,8 +51,8 @@ void	character_valid(t_complete *game)
 	if (!(game->playercount == 1 && game->columncount >= 1
 			&& game->exitcount == 1))
 	{
-		ft_printf("\nError\nSomething is wrong!\n");
-		ft_printf("either player, exit or collectable issue\n");
+		ft_printf("Error\n");
+		ft_printf("Either player, exit or collectable issue\n");
 		exit_point(game);
 	}
 }

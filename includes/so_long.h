@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:32:24 by julietteand       #+#    #+#             */
-/*   Updated: 2023/10/18 18:31:10 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:08:58 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ typedef struct t_start
 }	t_complete;
 
 int		exit_point(t_complete *game);
-int		map_reading(t_complete *game, int ac, char **argv);
+int		map_reading(t_complete *game, char **argv);
 int		move(t_complete *game, int i, int j);
 int		controls_working(int command, t_complete *game);
-int		is_valid_file_extension(const char *filename);
 int		open_map_file(t_complete *game, const char *filename);
-int		check_map_size(t_complete *game);
+// int		check_map_size(t_complete *game);
+void display_map_if_resolution_permits(void *mlx_ptr, int required_width, int required_height);
 int		read_map_dimensions(t_complete *game);
 int		width_map(char *str);
 char	*ft_strstr(const char *big, const char *little);

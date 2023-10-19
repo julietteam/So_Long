@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:50:15 by julietteand       #+#    #+#             */
-/*   Updated: 2023/10/18 11:47:47 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 18:53:34 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	keyboard_w(t_complete *game, int movement)
 		moving = move(game, line, column);
 		if (!moving)
 			return (0);
-		game->map[column + 1][line] = '0';
 	}
 	ft_printf("Movements: %i\n", game->counter);
 	return (1);
@@ -50,7 +49,6 @@ static int	keyboard_s(t_complete *game, int movement)
 		moving = move(game, line, column);
 		if (!moving)
 			return (0);
-		game->map[column - 1][line] = '0';
 	}
 	ft_printf("Movements: %i\n", game->counter);
 	return (1);
@@ -72,7 +70,6 @@ static	int	keyboard_a(t_complete *game, int movement)
 		moving = move(game, line, column);
 		if (!moving)
 			return (0);
-		game->map[column][line + 1] = '0';
 	}
 	ft_printf("Movements: %i\n", game->counter);
 	ft_printf("Items: %i\n", game->collectables);
@@ -95,7 +92,6 @@ static	int	keyboard_d(t_complete *game, int movement)
 		moving = move(game, line, column);
 		if (!moving)
 			return (0);
-		game->map[column][line - 1] = '0';
 	}
 	ft_printf("Movements: %i\n", game->counter);
 	ft_printf("Items: %i\n", game->collectables);

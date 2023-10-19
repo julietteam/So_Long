@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:27:53 by julietteand       #+#    #+#             */
-/*   Updated: 2023/10/18 15:34:34 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 18:59:15 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,20 @@ int	main(int ac, char **av)
 {
 	t_complete	game;
 
-	if (ac != 2)
+	if (ac != 2 || ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))
+	{
+		ft_printf("Error\nUsage :./so_long <file.ber>\n");
 		return (1);
+	}
 	ft_memset_sl(&game, 0, sizeof(t_complete));
-	map_reading(&game, ac, av);
+	if (!map_reading(&game, av))
+		return (ft_putstr_fd("Error malloc\n", 2), 2);
 	check_errors(&game);
 	game.mlxpointer = mlx_init();
 	if (!game.mlxpointer)
 		return (1);
-	game.winpointer = mlx_new_window(game.mlxpointer, (game.widthmap * 40),
-			(game.heightmap * 40), "solong");
+	game.winpointer = mlx_new_window(game.mlxpointer, (game.widthmap * 50), \
+		(game.heightmap * 50), "solong");
 	if (!game.winpointer)
 	{
 		mlx_destroy_display(game.mlxpointer);

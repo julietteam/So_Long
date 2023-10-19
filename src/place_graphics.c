@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:10:05 by juandrie          #+#    #+#             */
-/*   Updated: 2023/10/18 13:30:07 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:29:41 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	draw_barrier(t_complete *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer, \
-		game->winpointer, game->barrier, width * 40, height * 40);
+		game->winpointer, game->barrier, width * 50, height * 50);
 }
 
 void	draw_exit(t_complete *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer, \
-		game->winpointer, game->exit, width * 40, height * 40);
+		game->winpointer, game->exit, width * 50, height * 50);
 }
 
 void	draw_floor(t_complete *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer, \
-		game->winpointer, game->floor, width * 40, height * 40);
+		game->winpointer, game->floor, width * 50, height * 50);
 }
 
 void	process_cell(t_complete *game, char cell, int x, int y)

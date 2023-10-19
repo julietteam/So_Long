@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:14:42 by julietteand       #+#    #+#             */
-/*   Updated: 2023/10/18 18:35:29 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:05:14 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static int	add_line(t_complete *game, char *line)
 	i = 0;
 	game->heightmap++;
 	temporary = (char **)malloc(sizeof(char *) * (game->heightmap + 1));
+	if (!temporary)
+		return (0);
 	temporary[game->heightmap] = NULL;
 	while (i < game->heightmap - 1)
 	{
@@ -54,12 +56,16 @@ int	read_map_dimensions(t_complete *game)
 	while (1)
 	{
 		readmap = get_next_line(game->fd);
+		if (!readmap && !game->map)
+			return (close (game->fd), 0);
 		if (!readmap)
 			break ;
 		if (!add_line(game, readmap))
 		{
-			free (readmap);
-			break ;
+			free(readmap);
+			get_next_line(-1);
+			free(game->map);
+			return (close (game->fd), 0);
 		}
 		game->widthmap = width_map(game->map[0]);
 	}
@@ -67,20 +73,18 @@ int	read_map_dimensions(t_complete *game)
 	return (1);
 }
 
-int	map_reading(t_complete *game, int ac, char **argv)
+int	map_reading(t_complete *game, char **argv)
 {
 	char	*filename;
+	int required_width = game->widthmap * 50; // Largeur requise pour votre carte
+    int required_height = game->heightmap * 50; // Hauteur requise pour votre carte
 
 	filename = argv[1];
-	if (ac != 2 || !is_valid_file_extension(filename))
-		return (0);
 	if (!open_map_file(game, filename))
 		return (0);
 	if (!read_map_dimensions(game))
 		return (0);
-	if (!check_map_size(game))
-	{
-		return (0);
-	}
+    if (!display_map_if_resolution_permits(game->mlxpointer, required_width, required_height))
+        return (0);
 	return (1);
 }

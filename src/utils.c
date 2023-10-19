@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:35:29 by juandrie          #+#    #+#             */
-/*   Updated: 2023/10/18 18:32:06 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:11:57 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,36 @@ char	*ft_strstr(const char *big, const char *little)
 	return (NULL);
 }
 
-int	is_valid_file_extension(const char *filename)
-{
-	const char	*file_extension;
-
-	file_extension = ".ber";
-	if (ft_strstr(filename, file_extension) == NULL)
-	{
-		return (0);
-	}
-	return (1);
-}
-
 int	open_map_file(t_complete *game, const char *filename)
 {
 	game->fd = open(filename, O_RDONLY);
 	if (game->fd < 0)
-	{
 		return (0);
-	}
 	return (1);
 }
 
-int	check_map_size(t_complete *game)
-{
-	if (game->widthmap > 48 || game->heightmap > 27)
-	{
-		ft_printf("The map is too big for the screen.\n");
-		exit_point(game);
-		exit (0);
-	}
-	return (1);
+// int	check_map_size(t_complete *game, int height, int width)
+// {
+// 	// if (game->widthmap > 48 || game->heightmap > 27)
+	
+// 	{
+// 		ft_printf("Error\nThe map is too big for the screen.\n");
+// 		exit_point(game);
+// 		exit (0);
+// 	}
+// 	return (1);
+// }
+int display_map_if_resolution_permits(void *mlx_ptr, int required_width, int required_height) {
+    int screen_width, screen_height;
+
+    mlx_get_screen_size(mlx_ptr, &screen_width, &screen_height);
+
+    if (screen_width >= required_width && screen_height >= required_height) {
+        return 1; // La résolution de l'écran le permet.
+    } else {
+        ft_printf("Error\nThe map is too big for the screen.\n");
+        exit_point(game); // Assurez-vous que cette fonction gère proprement la sortie.
+        exit(0);
+    }
 }
+

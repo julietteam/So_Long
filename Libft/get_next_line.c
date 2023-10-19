@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 16:31:51 by juandrie          #+#    #+#             */
-/*   Updated: 2023/10/17 14:38:18 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/19 18:13:09 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 	static char		*stash;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+		return (free(stash), NULL);
 	if (!stash)
 	{
 		stash = malloc (sizeof(char));
