@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:32:24 by julietteand       #+#    #+#             */
-/*   Updated: 2023/10/19 19:08:58 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:06:56 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ int		map_reading(t_complete *game, char **argv);
 int		move(t_complete *game, int i, int j);
 int		controls_working(int command, t_complete *game);
 int		open_map_file(t_complete *game, const char *filename);
-// int		check_map_size(t_complete *game);
-void display_map_if_resolution_permits(void *mlx_ptr, int required_width, int required_height);
+int		display_map(t_complete *game);
 int		read_map_dimensions(t_complete *game);
 int		width_map(char *str);
 char	*ft_strstr(const char *big, const char *little);

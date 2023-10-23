@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:14:42 by julietteand       #+#    #+#             */
-/*   Updated: 2023/10/19 19:05:14 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:58:55 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,11 @@ int	read_map_dimensions(t_complete *game)
 int	map_reading(t_complete *game, char **argv)
 {
 	char	*filename;
-	int required_width = game->widthmap * 50; // Largeur requise pour votre carte
-    int required_height = game->heightmap * 50; // Hauteur requise pour votre carte
 
 	filename = argv[1];
 	if (!open_map_file(game, filename))
 		return (0);
 	if (!read_map_dimensions(game))
 		return (0);
-    if (!display_map_if_resolution_permits(game->mlxpointer, required_width, required_height))
-        return (0);
 	return (1);
 }
