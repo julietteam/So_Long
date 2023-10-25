@@ -6,7 +6,7 @@
 #    By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/24 18:34:33 by julietteand       #+#    #+#              #
-#    Updated: 2023/10/18 16:47:41 by juandrie         ###   ########.fr        #
+#    Updated: 2023/10/24 14:43:09 by juandrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC = controls.c\
 					walls.c\
 					place_graphics.c\
 					utils.c\
+					flood_fill.c\
 
 # Chemins complets
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))

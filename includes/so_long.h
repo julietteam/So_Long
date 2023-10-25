@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:32:24 by julietteand       #+#    #+#             */
-/*   Updated: 2023/10/23 14:06:56 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:48:40 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdio.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
@@ -34,10 +35,13 @@ typedef struct t_start
 	int		exitcount;
 	int		x_axis;
 	int		y_axis;
+	int		x;
+	int		y;
+	int		player_x;
+	int		player_y;
 	int		counter;
 	int		collectables;
 	char	**map;
-
 	void	*floor;
 	void	*barrier;
 	void	*player;
@@ -56,6 +60,7 @@ int		open_map_file(t_complete *game, const char *filename);
 int		display_map(t_complete *game);
 int		read_map_dimensions(t_complete *game);
 int		width_map(char *str);
+bool	is_valid_path(t_complete *game);
 char	*ft_strstr(const char *big, const char *little);
 void	adding_in_graphics(t_complete *game);
 void	place_images_in_game(t_complete *game);

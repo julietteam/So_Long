@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 17:34:50 by julietteand       #+#    #+#             */
-/*   Updated: 2023/10/18 17:54:23 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:50:39 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	if_walls(t_complete *game)
 	horizontalwalls = horizontalwall(game);
 	if (!verticalwalls || !horizontalwalls)
 	{
-		ft_printf("No walls !!\n");
+		ft_printf("Error\nNo walls !!\n");
 		exit_point(game);
 	}
 }

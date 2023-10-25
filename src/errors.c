@@ -6,7 +6,7 @@
 /*   By: juandrie <juandrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:51:16 by juandrie          #+#    #+#             */
-/*   Updated: 2023/10/19 16:44:46 by juandrie         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:50:58 by juandrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ static void	count_checker(t_complete *game, int h, int w)
 		game->exitcount++;
 }
 
+void	update_position(t_complete *game, int line, int column)
+{
+	count_checker(game, line, column);
+	if (game->map[line][column] == 'P')
+	{
+		game->x = column;
+		game->y = line;
+	}
+}
+
 void	character_valid(t_complete *game)
 {
 	int	line;
@@ -43,7 +53,7 @@ void	character_valid(t_complete *game)
 		column = 0;
 		while (column <= game->widthmap)
 		{
-			count_checker(game, line, column);
+			update_position(game, line, column);
 			column++;
 		}
 		line++;
@@ -61,4 +71,9 @@ void	check_errors(t_complete *game)
 {
 	if_walls(game);
 	character_valid(game);
+	if (!is_valid_path(game))
+	{
+		ft_printf("Error\nInvalid path.\n");
+		exit_point(game);
+	}
 }
